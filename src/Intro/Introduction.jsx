@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 const Intoduction = () => {
   const navigate = useNavigate("/");
   const { setCurrentPage } = useContext(Formcontext);
+  console.log(process.env.REACT_APP_ADD_ACC);
 
   return (
     <div className="mt-[12%]">
@@ -64,7 +65,7 @@ const Intoduction = () => {
                   }}
                 />
 
-                <Link to="https://github.com/sahil-gpm" target="_blank">
+                <Link to="https://github.com/sahil-gpm/multistep-form" target="_blank">
                   <Button
                     text={"Github link"}
                     backgroundColor={"black"}
