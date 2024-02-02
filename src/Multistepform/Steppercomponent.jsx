@@ -3,6 +3,7 @@ import React from "react";
 import { useContext } from "react";
 import { Formcontext } from "../context/Formcontext";
 
+//stepper component from the material ui library
 const StepperComponent = () => {
 
   const {currentPage} = useContext(Formcontext)

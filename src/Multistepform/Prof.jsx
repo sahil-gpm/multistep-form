@@ -9,10 +9,12 @@ import Button from "../helpers/Button";
 import { Link, useNavigate } from "react-router-dom";
 
 const Prof = () => {
+  //state for storing data from mongo, show toast method from context api and navigate for navigation
   const [data, setData] = useState({});
   const { toaster } = useContext(Formcontext);
   const navigate = useNavigate("/");
 
+  //get data for the appropriate user
   const getData = useCallback(async () => {
     axios
       .post(process.env.REACT_APP_GET_DATA, {
@@ -32,29 +34,30 @@ const Prof = () => {
   }, [getData]);
 
   return (
+    //content to be returned
     <div className="wrapper w-[95%] lg:w-3/4 mx-auto mt-[5%]">
       {/* personal details  */}
       <div className="personaldetails">
         <div className="name text-4xl lg:text-6xl capitalize font-semibold flex flex-col items-center gap-2">
           <div className="replica-profile-image bg-gradient-to-br from-red via-blue to-green w-48 h-48 rounded-full" />
-
+          {/* user name  */}
           {data?.firstname + " " + data?.lastname}
-
+          {/* user email  */}
           <div className="email font-normal normal-case text-sm flex gap-2 mx-1">
             <img src={email} className="w-5" alt="" />
             {data?.email}
           </div>
-
+          {/* user bio  */}
           <div className="bio font-normal text-xs text-tertiary w-[95%] lg:w-[80%] text-start bg-element py-10 px-10 rounded-md mt-5">
             <div className="text-4xl font-semibold mb-5">Bio ↴</div>
             {data?.bio}
           </div>
-
+          {/* user education  */}
           <div className="bio font-normal text-xs text-tertiary w-[95%] lg:w-[80%] text-start bg-element py-10 px-10 rounded-md mt-5">
             <div className="text-4xl font-semibold mb-5">Qualifications ↴</div>
             {data?.education}
           </div>
-
+          {/* user projects  */}
           <div className="projects text-4xl font-semibold text-tertiary w-[95%] lg:w-[80%] text-start bg-element py-10 px-10 rounded-md mt-5">
             Project links ↴
             <div className="mt-4">
@@ -67,7 +70,7 @@ const Prof = () => {
               })}
             </div>
           </div>
-
+          {/* user social links  */}
           <div className="projects text-4xl font-semibold text-tertiary w-[95%] lg:w-[80%] text-start bg-element py-10 px-10 rounded-md mt-5">
             Social links ↴
             <div className="mt-4">
@@ -86,12 +89,14 @@ const Prof = () => {
             </div>
           </div>
 
+          {/* acc creation data */}
           <div className="text-sm my-5 normal-case font-normal">
             Account created on {data?.creation?.substring(0, 10)}
           </div>
         </div>
       </div>
 
+      {/* button to remove current account data from localstorage, not from database , we can do it later  */}
       <div className="button-to-forgot-about-current-account mx-auto text-center">
         <Button
           text={"Forget about current account"}

@@ -10,12 +10,13 @@ import { Formcontext } from "../context/Formcontext";
 import { Link } from "react-router-dom";
 
 const Intoduction = () => {
-  const navigate = useNavigate("/");
-  const { setCurrentPage } = useContext(Formcontext);
-  console.log(process.env.REACT_APP_ADD_ACC);
+  const navigate = useNavigate("/"); //use navigate for navigation
+  const { setCurrentPage } = useContext(Formcontext); //current form page index
 
+  //content of the page
   return (
     <div className="mt-[12%]">
+      {/* if the email is present in local storage then only show the button  */}
       {localStorage.getItem("current") && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -23,11 +24,15 @@ const Intoduction = () => {
           transition={{ duration: 1.2, delay: 0.25 }}
           className="absolute top-5 right-5 flex justify-start gap-2 bg-element px-4 py-2 rounded-md"
         >
-          <Button text={"View profile"} onClick={()=>navigate("/current-acc")}/>
+          <Button
+            text={"View profile"}
+            onClick={() => navigate("/current-acc")}
+          />
           <div className="w-6 h-6 bg-gradient-to-tr from-red via-blue to-green rounded-full"></div>
         </motion.div>
       )}
 
+      {/* main content of the intro page  */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -65,7 +70,10 @@ const Intoduction = () => {
                   }}
                 />
 
-                <Link to="https://github.com/sahil-gpm/multistep-form" target="_blank">
+                <Link
+                  to="https://github.com/sahil-gpm/multistep-form"
+                  target="_blank"
+                >
                   <Button
                     text={"Github link"}
                     backgroundColor={"black"}
@@ -78,11 +86,16 @@ const Intoduction = () => {
                 </Link>
               </div>
             </div>
-            <img src={avatar} className="lg:w-[25%] w-1/2 md:mt-0 mt-4" alt="" />
+            <img
+              src={avatar}
+              className="lg:w-[25%] w-1/2 md:mt-0 mt-4"
+              alt=""
+            />
           </div>
         </div>
       </motion.div>
 
+      {/* small section for me 🤞 */}
       <motion.div
         initial={{ opacity: 0, y: 4 }}
         animate={{ opacity: 1, y: 0 }}
@@ -95,7 +108,8 @@ const Intoduction = () => {
   );
 };
 
-// function to render image components
+
+// function to render image components, this was created because i wanted to add small images as icons and i didn't wanted to add too many img srcs 
 const ImageComponent = ({ image }) => {
   return (
     <span>

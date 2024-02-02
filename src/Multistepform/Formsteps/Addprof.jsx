@@ -5,6 +5,8 @@ import Textfieldcomponent from "../../helpers/Textfield";
 import Loader from "../../helpers/Loader";
 
 const Addprof = () => {
+
+  //getting the required states from context
   const {
     setSocial1,
     setSocial2,
@@ -17,6 +19,7 @@ const Addprof = () => {
     loader
   } = useContext(Formcontext);
 
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -25 }}
@@ -24,11 +27,15 @@ const Addprof = () => {
       transition={{ duration: 1.2 }}
       className="mt-10"
     >
-      {loader && <Loader/>}
+      {/* loader component for loading  */}
+      {loader && <Loader/>} 
+
+      {/* heading  */}
       <div className="head text-5xl font-semibold text-start m-auto tracking-tight w-[90%] xl:w-[53%]">
         Add your social media links and fun facts about you🤞
       </div>
 
+      {/* text fields and text area  */}
       <div className="wrapper min-h-[48vh] mx-auto w-[90%] xl:w-[53%]">
         <div className="inputs mt-8">
           <Textfieldcomponent

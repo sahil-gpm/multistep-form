@@ -4,7 +4,7 @@ import Textfieldcomponent from "../../helpers/Textfield";
 import { motion } from "framer-motion";
 
 const Qualiskills = () => {
-  //getting the required fields from context
+  //getting the required states from context
   const {
     link1,
     setLink1,

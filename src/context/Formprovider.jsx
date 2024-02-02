@@ -26,6 +26,7 @@ const Formprovider = ({ children }) => {
   const [fact, setFact] = useState("");
   const [loader, setLoader] = useState(false);
 
+  //function to show the test message
   const toaster = (string, emoji) => {
     toast(string, {
       icon: emoji,
@@ -37,6 +38,7 @@ const Formprovider = ({ children }) => {
     });
   };
 
+  //this method will outline the inputs and textareas in the data in them is not valid
   const outliner = () => {
     const inputs = document.getElementsByTagName("input");
     const areas = document.getElementsByTagName("textarea");
@@ -56,6 +58,7 @@ const Formprovider = ({ children }) => {
     });
   };
 
+  //method to validate form 1 : personal details
   const validateForm1 = () => {
     outliner();
     //checking for empty fields
@@ -63,8 +66,15 @@ const Formprovider = ({ children }) => {
       toaster("Fill the required fields", "👏");
       return;
     }
-    if (password.length < 6) {
-      toaster("Password too short", "👏");
+    //if the password length is less than 6
+    else if (password.length < 6) {
+      toaster("Password too short", "❌");
+      return;
+    }
+    //if passwords doesn't match
+    else if (password !== confirmPass) {
+      toaster("Passwords do not match", "❌");
+      return;
     } else {
       if (currentPage < 1) {
         setCurrentPage(currentPage + 1);
@@ -72,6 +82,7 @@ const Formprovider = ({ children }) => {
     }
   };
 
+  //method to validate form 2 : qualifications and projects
   const validateForm2 = () => {
     outliner();
     //checking for empty fields
@@ -79,11 +90,13 @@ const Formprovider = ({ children }) => {
       toaster("Mention the project links", "🔗");
       return;
     }
-    if (!education) {
+    //if the education textarea is not filled
+    else if (!education) {
       toaster("Add educational qualification", "📚");
       return;
     }
-    if (education.trim().length < 40) {
+    // if the education field is not of expexted length
+    else if (education.trim().length < 40) {
       toaster("Educational details too short", "😕");
       return;
     } else {
@@ -93,6 +106,7 @@ const Formprovider = ({ children }) => {
     }
   };
 
+  //method to validate form 3 : social links and fun fact
   const validateForm3 = () => {
     outliner();
     //checking for empty fields
@@ -100,14 +114,16 @@ const Formprovider = ({ children }) => {
       toaster("Mention the social media links", "🔗");
       return false;
     }
-    if (!fact || fact.length < 10) {
-      toaster("Add a proper fun fact about you", "👀");
+    //validating fact and fact length
+    else if (!fact || fact.length < 10) {
+      toaster("Add a proper fun fact about you with suitable length", "👀");
       return false;
     }
     return true;
   };
 
   return (
+    //passing all states, methods to the context provider values
     <Formcontext.Provider
       value={{
         currentPage,

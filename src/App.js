@@ -8,11 +8,12 @@ import Prof from "./Multistepform/Prof";
 const App = () => {
   return (
     <div className="App bg-primary text-secondary h-[100vh] overflow-x-hidden pb-10">
+      {/* react hot toast  */}
       <Toaster
         position="bottom-center"
         reverseOrder={false}
         containerStyle={{
-          color:"#1c1c1c"
+          color: "#1c1c1c",
         }}
         toastOptions={{
           iconTheme: {
@@ -21,6 +22,7 @@ const App = () => {
         }}
       />
 
+      {/* react router setup  */}
       <BrowserRouter>
         <Routes>
           {/* the home component  */}

@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Form = () => {
-  const navigate = useNavigate("/");
+  const navigate = useNavigate("/"); //use navigate for navigation
+
+  //states from context
   const {
     currentPage,
     setCurrentPage,
@@ -33,10 +35,12 @@ const Form = () => {
     toaster,
   } = useContext(Formcontext);
 
+  //add account local method for creating account
   const addAcc = async () => {
-    
+    //making an axios post request
     axios
       .post(process.env.REACT_APP_ADD_ACC, {
+        //passing body
         firstname: firstName,
         lastname: lastName,
         email: email,
@@ -51,7 +55,8 @@ const Form = () => {
         if (response.data.success) {
           setLoader(false);
           toaster("New account created", "🙂");
-          localStorage.setItem("current", email); //i know we can use session or cookies but for now i am doing it with localstorage
+          //i know we can use session or cookies but for now i am doing it with localstorage, as the main goal is to create a multi step from with proper ux.
+          localStorage.setItem("current", email);
           navigate("/current-acc");
           window.location.reload();
         } else {
@@ -59,6 +64,7 @@ const Form = () => {
           setLoader(false);
         }
       })
+      // catching error
       .catch((e) => {
         toaster(e.message, "❌");
         setLoader(false);
@@ -78,7 +84,9 @@ const Form = () => {
         />
       </div>
 
+      {/* stepper component to watch the progress  */}
       <Stepper />
+
       {currentPage === 0 ? (
         <Personalform />
       ) : currentPage === 1 ? (
@@ -86,6 +94,7 @@ const Form = () => {
       ) : (
         <Addprof />
       )}
+
       <div className="navigators w-[90%] xl:w-[53%] flex justify-between mx-auto">
         <Button
           text={"Previous"}
@@ -106,6 +115,7 @@ const Form = () => {
           borderRadius={4}
           padding={10}
           onClick={async () => {
+            // executing appropriate validation function based on currentPage 
             if (currentPage === 0) {
               validateForm1();
               return;
@@ -114,8 +124,8 @@ const Form = () => {
               validateForm2();
               return;
             }
-
             const res = validateForm3();
+            // if the res is true , i.e all fields are valid then create a new acc 
             if (res) {
               addAcc();
             }

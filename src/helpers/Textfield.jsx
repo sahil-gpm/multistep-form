@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import view from "../assets/eye.png";
 import unview from "../assets/hidden.png";
+
+//custom textfield input
 const Textfieldcomponent = ({ placeholder, type, height, value, onChange }) => {
   const [inputType, setInputType] = useState(type);
 
@@ -15,8 +17,9 @@ const Textfieldcomponent = ({ placeholder, type, height, value, onChange }) => {
         onChange={onChange}
       />
 
-      {/* my custom button is not used here as it is too big anns not suitable here */}
+      {/* my custom button is not used here as it is too big and not suitable here */}
       {type === "password" && (
+        //if the type of input is password then make it text on icon click and vice versa along that also change the src of icon
         <button
           onClick={(e) => {
             e.preventDefault();

@@ -5,7 +5,8 @@ import {motion} from 'framer-motion'
 
 
 const Personalform = () => {
-  //getting the required fields from context
+
+  //getting the required states from context
   const {
     firstName,
     setFirstname,

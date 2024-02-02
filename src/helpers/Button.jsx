@@ -1,5 +1,6 @@
 import React from "react";
 
+//custom button component
 const Button = ({
   text,
   disable,
@@ -14,6 +15,8 @@ const Button = ({
   onClick,
   opacity,
 }) => {
+
+  //content to be returned
   return (
     <button
       className="text-sm font-semibold"
