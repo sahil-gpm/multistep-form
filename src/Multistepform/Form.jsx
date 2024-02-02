@@ -35,7 +35,7 @@ const Form = () => {
 
   const addAcc = async () => {
     axios
-      .post("http://localhost:3001/api/add-account", {
+      .post(process.env.REACT_APP_ADD_ACC, {
         firstname: firstName,
         lastname: lastName,
         email: email,
@@ -52,11 +52,11 @@ const Form = () => {
           toaster("New account created", "🙂");
           localStorage.setItem("current", email); //i know we can use session or cookies but for now i am doing it with localstorage
           navigate("/current-acc");
+        window.location.reload();
         } else {
           toaster("Account creation failed", "❌");
           setLoader(false);
         }
-        window.location.reload();
       })
       .catch((e) => {
         toaster(e.message, "❌");

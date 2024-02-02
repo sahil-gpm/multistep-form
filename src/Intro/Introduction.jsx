@@ -50,7 +50,7 @@ const Intoduction = () => {
               <ImageComponent image={mongo} /> for the database is a powerful
               tech stack, hope you like it. Happy Coding!! 🚀
               {/* buttons  */}
-              <div className="buttons flex flex-col justify-center items-center lg:flex-row gap-4 mt-6">
+              <div className="buttons flex flex-col justify-center xl:justify-start items-center lg:flex-row gap-4 mt-6">
                 <Button
                   text={"Create account"}
                   backgroundColor={"white"}

@@ -13,9 +13,9 @@ const Prof = () => {
   const { toaster } = useContext(Formcontext);
   const navigate = useNavigate("/");
 
-  const getData = useCallback(async() => {
+  const getData = useCallback(async () => {
     axios
-      .post("http://localhost:3001/api/get-data", {
+      .post(process.env.REACT_APP_GET_DATA, {
         email: localStorage.getItem("current"),
       })
       .then((res) => {
@@ -25,7 +25,7 @@ const Prof = () => {
       .catch(() => {
         toaster("Failed data fetching", "🥲");
       });
-  },[toaster]);
+  }, [toaster]);
 
   useEffect(() => {
     getData();
