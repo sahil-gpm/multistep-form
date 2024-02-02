@@ -52,7 +52,7 @@ const Form = () => {
           toaster("New account created", "🙂");
           localStorage.setItem("current", email); //i know we can use session or cookies but for now i am doing it with localstorage
           navigate("/current-acc");
-        window.location.reload();
+          window.location.reload();
         } else {
           toaster("Account creation failed", "❌");
           setLoader(false);
@@ -61,7 +61,6 @@ const Form = () => {
       .catch((e) => {
         toaster(e.message, "❌");
         setLoader(false);
-        window.location.reload();
       });
   };
 
