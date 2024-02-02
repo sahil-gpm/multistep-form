@@ -13,7 +13,7 @@ const StepperComponent = () => {
   ];
 
   return (
-    <div className="mt-[4%] w-[95%] xl:w-[53%] mx-auto">
+    <div className="mt-[4%] w-[95%] xl:w-[60%] mx-auto">
       <Stepper activeStep={currentPage} alternativeLabel >
         {steps.map((label) => (
           <Step 
